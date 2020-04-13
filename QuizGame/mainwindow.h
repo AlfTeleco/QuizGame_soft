@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QtSerialPort/QSerialPort>
+#include <qcustomplot.h>
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,9 @@ public:
         bool localEchoEnabled;
     };
 
+private slots:
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainWindow      *ui;
     QSerialPort         *m_serial;
@@ -46,6 +50,9 @@ private:
     void                readData();
     void                handleError(QSerialPort::SerialPortError error);
     void                about();
+    void                light_up_button(const QString &data);
+    void                update_plot();
+    QCustomPlot         *get_custom_plot();
 };
 
 #endif // MAINWINDOW_H
